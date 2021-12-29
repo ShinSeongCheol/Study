@@ -1,15 +1,46 @@
 <!DOCTYPE html>
 <html>
+
     <head>
-    <meta name="viewport" content="width=device-width, initial-scale">
+    <meta name="viewport" content="width=device-width">
     <title>cdn</title>
     </head>
+
     <body>
+
         <div id="app">
             <h1>{{ product }}</h1>
             <h1>{{ sample }}</h1>
+
+            <span v-bind:title="message">내 위에 잠시 마우스를 올리면 동적으로 바인딩 된 title을 볼 수 있습니다.</span>
+        
+            <p v-if="seen">이제 나를 볼 수 있어요</p>
+
+            <ol>
+                <li v-for="todo in todos">
+                    {{ todo.text }}
+                </li>
+            </ol>
+
+            <p>
+                {{ message2 }}
+            </p>
+            <button v-on:click="reverseMessage">메시지 뒤집기</button>
+
+            <input v-model="message3">
+
+            <ol>
+                <todo-item 
+                    v-for="item in groceryList" 
+                    v-bind:todo="item" 
+                    v-bind:key="item.id">
+                </todo-item>
+            </ol>
         </div>
+
     </body>
+
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="main.js"></script>
+
 </html>
