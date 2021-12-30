@@ -72,7 +72,7 @@
             <label>이메일</label>
             <input placeholder="이메일 주소를 입력하세요">
         </template>
-        
+
         <template v-if="loginType === 'username'">
             <label>사용자 이름</label>
             <input placeholder="사용자 이름을 입력하세요" key="username-input">
@@ -84,6 +84,51 @@
         <button v-on:click="changeLT">유형변경</button>
     </div>
 
+    <!--리스트 렌더링-->
+    <!--v-for-->
+    <ul id="example-1">
+        <li v-for="item in items">
+            {{ item.message }}
+        </li>
+        <br>
+        <li v-for="(value, name, index) in object">
+            {{ index }}. {{ name }}: {{ value }}
+        </li>
+
+        <!--배열 변경 감지-->
+        <!--필터링/정렬된 결과 표시하기-->
+        <li v-for="n in evenNumbers">
+            {{ n }}
+        </li>
+
+        <!--range v-for-->
+        <span v-for="n in 10">
+            {{ n }}
+        </span>
+
+        <!--v-for 템플릿-->
+        <template v-for="item in items">
+            <li>{{ item.msg }}</li>
+            <li class="divider" role="presentation"></li>
+        </template>
+    </ul>
+
+    <!--v-for와 컴포넌트-->
+    <my-component v-for="item in items" :key="item.id"></my-component>
+    <my-component v-for="item in items" v-bind:item="item" v-bind:index="index" v-bind:key="item.id"></my-component>
+
+    <!--간단한 할일 목록 전체 예제-->
+    <div id="todo-list-example">
+        <form v-on:submit.prevent="addNewTodo">
+            <label for="new-todo">Add a todo</label>
+            <input v-model="newTodoText" id="new-todo" placeholder="E.g. Feed the cat">
+            <button>Add</button>
+        </form>
+        <ul>
+            <li is="todo-item" v-for="(todo, index) in todos" v-bind:key="index.id" v-bind:title="todo.title"
+                v-on:remove="todos.splice(index, 1)"></li>
+        </ul>
+    </div>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -128,21 +173,96 @@
                     this.awesome = true
             },
 
-            change1: function(){
-                if(this.type === 'A')
+            change1: function () {
+                if (this.type === 'A')
                     this.type = 'B'
-                else if(this.type === 'B')
+                else if (this.type === 'B')
                     this.type = 'C'
-                else if(this.type === 'C')
+                else if (this.type === 'C')
                     this.type = 'A'
             },
 
-            changeLT: function(){
-                if(this.loginType === "username"){
+            changeLT: function () {
+                if (this.loginType === "username") {
                     this.loginType = "email"
-                }else{
+                } else {
                     this.loginType = "username"
                 }
+            }
+        }
+    })
+
+    var list = new Vue({
+        el: '#example-1',
+        data: {
+            items: [
+                { message: 'Foo' },
+                { message: 'Bar' },
+                { message: 'zz' },
+                { msg: '1' },
+                { msg: '2' },
+            ],
+            object: {
+                title: 'How to do lists in Vue',
+                author: 'Jane Doe',
+                publishedAt: '2016-04-10',
+            },
+            numbers: [1, 2, 3, 4, 5]
+        },
+        computed: {
+            evenNumbers: function () {
+                return this.numbers.filter(function (number) {
+                    return number % 2 === 0
+                })
+            }
+        },
+    })
+    list.items.push({ message: 'Baz' })
+    list.items.push({ message: 'aBaz2' })
+    list.items.sort()
+    // list.items = list.items.filter(function (item) {
+    //     return item.message.match("Foo")
+    // })
+    Vue.set(list.object, 'age', 27)
+
+    //간단한 할일 목록 전체 예제
+    Vue.component('todo-item', {
+        template: '\
+            <li>\
+                {{ title }}\
+                 <button v-on:click="$emit(\'remove\')">Remove</button>\
+            </li>\
+            ',
+        props: ['title']
+    })
+
+    new Vue({
+        el: '#todo-list-example',
+        data: {
+            newTodoText: '',
+            todos: [
+                {
+                    id: 1,
+                    title: 'Do the dishes',
+                },
+                {
+                    id: 2,
+                    title: 'Take out the trash',
+                },
+                {
+                    id: 3,
+                    title: 'Mow the lawn'
+                }
+            ],
+            nextTodoId: 4
+        },
+        methods: {
+            addNewTodo: function () {
+                this.todos.push({
+                    id: this.nextTodoId++,
+                    title: this.newTodoText
+                })
+                this.newTodoText = ''
             }
         }
     })
