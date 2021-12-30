@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <div id="app">
+        <h1>
+            {{ message }}
+        </h1>
+
+        <!--인라인 스타일 바인딩-->
+        <div v-bind:style="{color: activeColor, fontSize: fontSize + 'px'}">
+            <p>hello</p>
+        </div>
+
+        <!--스타일 객체 직접 바인딩-->
+        <div v-bind:style="styleObject">
+            <h1>gg</h1>
+        </div>
+
+        <!--배열 구문을 이용하여 여러개의 스타일 적용-->
+        <div v-bind:style="[baseStyles, overridingStyles]">
+            <p>안녕하세요</p>
+        </div>
+    </div>
+
+    <!--조건부 렌더링-->
+    <div id="decision">
+        <!--v-if-->
+        <h1 v-if="awesome">Vue is awesome!</h1>>
+        <h1 v-else>Oh no 😫</h1>
+        <button v-on:click="changeTF">TF변경</button>
+
+        <!--template를 사용해서 여러개의 엘리먼트에 v-if사용하기-->
+        <template v-if="ok">
+            <h1>title</h1>
+            <p>paragraph 1</p>
+            <p>paragraph 2</p>
+        </template>
+
+        <!--v-else, v-else-if-->
+        <div v-if="Math.random() > 0.5">
+            이제 나를 볼 수 있어요
+        </div>
+        <div v-else>
+            이제는 안보입니다.
+        </div>
+
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            Not A/B/C
+        </div>
+        <button v-on:click="change1">change!</button>
+        <br>
+        <!--key를 사용해서 재사용-->
+        <template v-if="loginType === 'username'">
+            <label>사용자 이름</label>
+            <input placeholder="사용자 이름을 입력하세요">
+        </template>
+        <template v-else>
+            <label>이메일</label>
+            <input placeholder="이메일 주소를 입력하세요">
+        </template>
+        
+        <template v-if="loginType === 'username'">
+            <label>사용자 이름</label>
+            <input placeholder="사용자 이름을 입력하세요" key="username-input">
+        </template>
+        <template v-else>
+            <label>이메일</label>
+            <input placeholder="이메일 주소를 입력하세요" key="email-input">
+        </template>
+        <button v-on:click="changeLT">유형변경</button>
+    </div>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello',
+
+            activeColor: 'red',
+            fontSize: 30,
+
+            styleObject: {
+                color: 'red',
+                fontSize: '13px',
+            },
+
+            baseStyles: {
+                color: 'blue',
+            },
+
+            overridingStyles: {
+                fontSize: '30px',
+            },
+
+        }
+    })
+
+    var decision = new Vue({
+        el: '#decision',
+        data: {
+            awesome: true,
+            ok: false,
+            type: 'B',
+            loginType: 'username',
+        },
+        methods: {
+            changeTF: function () {
+                if (this.awesome)
+                    this.awesome = false
+                else
+                    this.awesome = true
+            },
+
+            change1: function(){
+                if(this.type === 'A')
+                    this.type = 'B'
+                else if(this.type === 'B')
+                    this.type = 'C'
+                else if(this.type === 'C')
+                    this.type = 'A'
+            },
+
+            changeLT: function(){
+                if(this.loginType === "username"){
+                    this.loginType = "email"
+                }else{
+                    this.loginType = "username"
+                }
+            }
+        }
+    })
+</script>
+
+</html>
