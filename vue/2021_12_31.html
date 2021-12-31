@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>2021/12/31</title>
+    </head>
+
+    <body>
+        <!--이벤트 청취-->
+        <div id="example-1">
+            <button v-on:click="counter += 1">Add 1</button>
+            <p>위 버튼을 클릭한 횟수는 {{ counter }} 번 입니다.</p>
+        </div>
+
+        <!--메소드 이벤트 핸들러-->
+        <div id="example-2">
+            <button v-on:click="greet">Greet</button>
+        </div>
+
+        <!--인라인 메소드 핸들러-->
+        <div id="example-3">
+            <button v-on:click="say('hi')">Say hi</button>
+            <button v-on:click="say('what')">Say what</button>
+            <!--javascript 식별자로 $기호 사용-->
+            <button v-on:click="warn('From cannot be submitted yet.', $event)">Submit</button>
+        </div>
+
+        <!-- 이벤트 수식어 -->
+        
+
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var example1 = new Vue({
+            el: '#example-1',
+            data: {
+                counter: 0
+            }
+        })
+
+        var example2 = new Vue({
+            el: '#example-2',
+            data: {
+                name: 'Vue.js'
+            },
+            methods: {
+                greet: function(event){
+                    alert('Hello ' + this.name + '!')
+                    if(event){
+                        alert(event.target.tagName)
+                    }
+                }
+            }
+        })
+
+        var example3 = new Vue({
+            el: '#example-3',
+            methods: {
+                say: function(message){
+                    alert(message)
+                },
+
+                warn: function(message, event){
+                    if(event) event.preventDefault()
+                    alert(message)
+                }
+            }
+        })
+    </script>
+
+</html>
