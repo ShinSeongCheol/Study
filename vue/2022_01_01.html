@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼입력 바인딩</title>
+</head>
+
+<body>
+    <!-- 폼입력 바인딩 -->
+
+    <!-- 문자열 -->
+    <div id="example-1">
+        <input v-model="message" placeholder="여기를 수정해보세요">
+        <p>메시지: {{ message }} </p>
+    </div>
+
+    <!-- 여러줄을 가진 문장 -->
+    <div id="example-2">
+        <span>여러 줄을 가지는 메시지:</span>
+        <p style="white-space: pre-line">{{ message }}</p>
+        <br>
+        <textarea v-model="message" placeholder="여러줄을 입력해보세요"></textarea>
+    </div>
+
+    <!-- 체크박스 -->
+    <div id="example-3">
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>
+        <br>
+        <!-- 여러개의 체크박스를 같은 배열에 바인딩 -->
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>체크한 이름: {{ checkedNames }}</span>
+    </div>
+
+    <!-- 라디오 -->
+    <div id="example-4">
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>선택: {{ picked }}</span>
+    </div>
+
+    <!-- 셀렉트 -->
+    <div id="example-5">
+        <select v-model="selected">
+            <option disabled value="">Please Select One</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <br>
+        <span>선택함: {{ selected }}</span>
+
+        <!-- 다중 셀렉트 -->
+        <br>
+        <select v-model="selected2" multiple>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <br>
+        <span>선택함: {{ selected2 }}</span>
+
+        <!-- v-for를 이용한 동적 옵션 렌더링 -->
+        <br>
+        <select v-model="selected3">
+            <option v-for="option in options" v-bind:value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+        <span>Selected: {{ selected3 }} </span>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    var example1 = new Vue({
+        el: '#example-1',
+        data: {
+            message: '',
+        }
+    })
+
+    var example2 = new Vue({
+        el: '#example-2',
+        data: {
+            message: '',
+        }
+    })
+
+    var example3 = new Vue({
+        el: '#example-3',
+        data: {
+            checked: false,
+            checkedNames: [],
+        }
+    })
+
+    var example4 = new Vue({
+        el: '#example-4',
+        data: {
+            picked: ''
+        }
+    })
+    
+    var example5 = new Vue({
+        el: '#example-5',
+        data: {
+            selected: '',
+            selected2: [],
+            selected3: '',
+            options: [
+                { text: 'One', value: 'A'},
+                { text: 'Two', value: 'B'},
+                { text: 'Three', value: 'C'},
+            ]
+        }
+    })
+</script>
+
+</html>
