@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="example">
+        <my-component1></my-component1>
+        <br>
+        <my-component2></my-component2>
+    </div>
+
+    <div id="example-2">
+        <simple-counter></simple-counter>
+        <simple-counter></simple-counter>
+        <simple-counter></simple-counter>
+    </div>
+    
+    <!-- props로 데이터 전달 -->
+    <div id="example-3">
+        <child message="안녕하세요!"></child>
+        <child2 my-message="안녕하세요!"></child2>
+        <br>
+        <input v-model="parentMsg">
+        <br>
+        <child2 :my-message="parentMsg"></child2>
+    </div>
+
+    <!-- v-on을 이용한 사용자 지정 이벤트 -->
+    <div id="counter-event-example">
+        <p>{{ total }}</p>
+        <button-counter v-on:increment="incrementTotal"></button-counter>
+        <button-counter v-on:increment="incrementTotal"></button-counter>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    // 전역 등록
+    Vue.component('my-component1', {
+        template: '<div>사용자 정의 컴포넌트 입니다!</div>'
+    })
+
+    var example1 = new Vue({
+        el: '#example',
+    })
+    //지역 등록
+    var Child = {
+        template: '<div>사용자 정의 컴포넌트 입니다!</div>'
+    }
+
+    var example2 = new Vue({
+        el: '#example',
+        components: {
+            'my-component2': Child
+        }
+    })
+
+    // var data = { counter: 0 }
+    Vue.component('simple-counter', {
+        template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+        data: function () {
+            return {
+                counter: 0
+            }
+        }
+    })
+    var example3 = new Vue({
+        el: '#example-2'
+    })
+
+    //Props로 데이터 전달하기
+    Vue.component('child', {
+        props: ['message'],
+        template: '<span>{{ message }}</span>'
+    })
+
+    Vue.component('child2',{
+        props: ['myMessage'],
+        template: '<span>{{ myMessage }}</span>'
+    })
+    var example4 = new Vue({
+        el: '#example-3',
+        data: {
+            parentMsg: '',
+        }
+    })
+    
+    //v-on을 이용한 사용자 지정 이벤트
+    Vue.component('button-counter',{
+        template: '<button v-on:click="incrementCounter">{{ counter }}</button>',
+        data: function(){
+            return {
+                counter: 0
+            }
+        },
+        methods: {
+            incrementCounter: function(){
+                this.counter += 1
+                this.$emit('increment')
+            }
+        }
+    })
+
+    var buttonCounter = new Vue({
+        el: '#counter-event-example',
+        data: {
+            total: 0,
+        },
+        methods: {
+            incrementTotal: function(){
+                this.total += 1
+            }
+        }
+    })
+</script>
+
+</html>
