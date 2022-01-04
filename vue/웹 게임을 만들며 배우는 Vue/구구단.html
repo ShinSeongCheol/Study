@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>구구단</title>
 </head>
+
 <body>
-    
+    <div id="root">
+        <div>{{ num1 }} 곱하기 {{ num2 }} 는? {{value}}</div>
+        <form v-on:submit="onSubmitForm">
+            <!-- ref는 참조 input태그의 이름을 answer로 지정 -->
+            <input type="number" v-model="value" ref="answer">
+            <button type="submit">입력</button>
+        </form>
+        <div>{{result}}</div>
+    </div>
 </body>
+
+<script src="vue.js"></script>
+
+<script>
+    var app = new Vue({
+        el: '#root',
+        data: {
+            num1: Math.ceil(Math.random() * 9),
+            num2: Math.ceil(Math.random() * 9),
+            value: '',
+            result: '',
+        },
+        methods: {
+            onSubmitForm(e){
+                e.preventDefault()
+                if(this.num1 * this.num2 === parseInt(this.value)){
+                    this.result = '정답'
+                    this.num1 = Math.ceil(Math.random() * 9)
+                    this.num2 = Math.ceil(Math.random() * 9)
+                    this.value = ''
+                    this.$refs.answer.focus()//입력버튼을 눌러도 포커스 해제하지 않기 위해
+                } else {
+                    this.result = '땡'
+                    this.value = ''
+                    this.$refs.answer.focus()
+                }
+            }
+        }
+    })
+</script>
+
 </html>
