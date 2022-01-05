@@ -11,40 +11,55 @@
 <body>
 
     <div id="root">
-        <div>{{word}}</div>
-        <form v-on:submit="onSubmitForm">
-            <input type="text" v-model="value" ref="answer">
-            <button type="submit">입력!</button>
-        </form>
-        <div>{{result}}</div>
+        <word-Relay word-start="강아지"></word-Relay>
+        <word-Relay word-start="고양이"></word-Relay>
+        <word-Relay word-start="미어캣"></word-Relay>
     </div>
 
 </body>
 <script src="vue.js"></script>
 <script>
-    const app = new Vue({
-        el: '#root',
-        data: {
-            word: '신성철',
-            result: '',
-            value: '',
+    Vue.component('wordRelay',{
+        template:
+        `
+        <div>
+            <div>{{word}}</div>
+                <form v-on:submit="onSubmitForm">
+                <input type="text" v-model="value" ref="answer">
+                <button type="submit">입력!</button>
+            </form>
+            <div>{{result}}</div>
+        </div>
+        `,
+        props: ['wordStart'],
+        data: function(){
+            return {
+                word: this.wordStart,
+                result:'',
+                value:'',
+            }
         },
         methods: {
             onSubmitForm(e) {
                 e.preventDefault()
                 if (this.word[this.word.length - 1] === this.value[0]) {
-                    this.result = '딩동댕'
+                    this.result = '정답입니다~!'
                     this.word = this.value
                     this.value = ''
                     this.$refs.answer.focus()
                 }
                 else {
-                    this.result = "땡"
+                    this.result = "틀렸습니다!"
                     this.value = ''
                     this.$refs.answer.focus()
                 }
             }
         },
+
+    })
+
+    const app = new Vue({
+        el: '#root',
     })
 </script>
 
