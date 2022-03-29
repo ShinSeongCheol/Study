@@ -4,15 +4,9 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org"
 	id="WebApp_ID" version="3.1">
 	<display-name>edu</display-name>
-	<!-- <servlet>
-		<servlet-name>first</servlet-name>
-		<servlet-class>com.edu.test.FirstServlet</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>first</servlet-name>
-		<url-pattern>/hello</url-pattern>
-	</servlet-mapping> -->
+	<!-- <servlet> <servlet-name>first</servlet-name> <servlet-class>com.edu.test.FirstServlet</servlet-class> 
+		</servlet> <servlet-mapping> <servlet-name>first</servlet-name> <url-pattern>/hello</url-pattern> 
+		</servlet-mapping> -->
 	<servlet>
 		<servlet-name>addInfo</servlet-name>
 		<servlet-class>com.edu.test.AdditionalInfoServlet</servlet-class>
@@ -20,5 +14,38 @@
 	<servlet-mapping>
 		<servlet-name>addInfo</servlet-name>
 		<url-pattern>/addInfo/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>initParam</servlet-name>
+		<servlet-class>com.edu.test.InitParamServlet</servlet-class>
+		<init-param>
+			<param-name>id</param-name>
+			<param-value>guest</param-value>
+		</init-param>
+		<init-param>
+			<param-name>password</param-name>
+			<param-value>1004</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>initParam</servlet-name>
+		<url-pattern>/initParamTest</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>servletConfigTest</servlet-name>
+		<servlet-class>com.edu.test.ServletConfigTestServlet</servlet-value>
+		<init-param>
+			<param-name>charset</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>servletConfigTest</servlet-name>
+		<url-pattern>/servletConfigTest</url-pattern>
 	</servlet-mapping>
 </web-app>
