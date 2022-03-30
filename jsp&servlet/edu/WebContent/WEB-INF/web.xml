@@ -34,10 +34,10 @@
 		<servlet-name>initParam</servlet-name>
 		<url-pattern>/initParamTest</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>servletConfigTest</servlet-name>
-		<servlet-class>com.edu.test.ServletConfigTestServlet</servlet-value>
+		<servlet-class>com.edu.test.ServletConfigTestServlet</servlet-class>
 		<init-param>
 			<param-name>charset</param-name>
 			<param-value>UTF-8</param-value>
