@@ -7,6 +7,11 @@
 	<!-- <servlet> <servlet-name>first</servlet-name> <servlet-class>com.edu.test.FirstServlet</servlet-class> 
 		</servlet> <servlet-mapping> <servlet-name>first</servlet-name> <url-pattern>/hello</url-pattern> 
 		</servlet-mapping> -->
+	<context-param>
+		<param-name>contextConfig</param-name>
+		<param-value>/WEB-INF/context.xml</param-value>
+	</context-param>	
+	
 	<servlet>
 		<servlet-name>addInfo</servlet-name>
 		<servlet-class>com.edu.test.AdditionalInfoServlet</servlet-class>
