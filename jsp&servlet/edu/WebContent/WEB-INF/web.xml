@@ -10,8 +10,28 @@
 	<context-param>
 		<param-name>contextConfig</param-name>
 		<param-value>/WEB-INF/context.xml</param-value>
-	</context-param>	
+	</context-param>
+
+	<filter>
+		<filter-name>flow1</filter-name>
+		<filter-class>com.edu.test.FlowFilterOne</filter-class>
+	</filter>
 	
+	<filter>
+		<filter-name>flow2</filter-name>
+		<filter-class>com.edu.test.FlowFilterTwo</filter-class>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>flow1</filter-name>
+		<url-pattern>/second</url-pattern>
+	</filter-mapping>
+	
+	<filter-mapping>
+		<filter-name>flow2</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<servlet>
 		<servlet-name>addInfo</servlet-name>
 		<servlet-class>com.edu.test.AdditionalInfoServlet</servlet-class>
@@ -31,6 +51,7 @@
 		<init-param>
 			<param-name>password</param-name>
 			<param-value>1004</param-value>
+			E
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -48,9 +69,11 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>servletConfigTest</servlet-name>
 		<url-pattern>/servletConfigTest</url-pattern>
 	</servlet-mapping>
+
+
 </web-app>
