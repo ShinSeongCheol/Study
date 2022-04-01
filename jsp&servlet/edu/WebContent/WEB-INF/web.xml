@@ -12,6 +12,7 @@
 		<param-value>/WEB-INF/context.xml</param-value>
 	</context-param>
 
+	<!--
 	<filter>
 		<filter-name>flow1</filter-name>
 		<filter-class>com.edu.test.FlowFilterOne</filter-class>
@@ -36,6 +37,40 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	-->
+	
+	<!-- 
+	<listener>
+		<listener-class>com.edu.test.TestRequestListener</listener-class>
+	</listener>
+	 -->
+	 
+	 <!-- 
+	 <listener>
+	 	<listener-class>com.edu.test.TestSessionListener</listener-class>
+	 </listener>
+	 
+	 <listener>
+	 	<listener-class>com.edu.test.TestSessionAttributeListener</listener-class>
+	 </listener>
+	 -->
+	 
+	 <!-- 
+	 <listener>
+	 	<listener-class>com.edu.test.TestServletContextListener</listener-class>
+	 </listener>
+	  -->
+	  
+	  <error-page>
+	  	<error-code>405</error-code>
+	  	<location>/errorHandle</location>
+	  </error-page>
+	  
+	  <error-page>
+	  	<exception-type>java.lang.NullPointerException</exception-type>
+	  	<location>/errorHandle</location>
+	  </error-page>
+	  
 	<servlet>
 		<servlet-name>addInfo</servlet-name>
 		<servlet-class>com.edu.test.AdditionalInfoServlet</servlet-class>
@@ -79,5 +114,5 @@
 		<url-pattern>/servletConfigTest</url-pattern>
 	</servlet-mapping>
 
-
+	
 </web-app>
