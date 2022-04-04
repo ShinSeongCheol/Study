@@ -16,6 +16,7 @@
 	<jsp:setProperty property="number" name="hello" param="b" /><br>
 	-->
 	<jsp:setProperty property="*" name="hello" />
+	
 	<hr>
 	
 	<jsp:getProperty property="name" name="hello" /><br>
