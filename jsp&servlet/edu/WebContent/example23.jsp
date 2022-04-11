@@ -7,6 +7,7 @@
 <title>Custom Tag</title>
 </head>
 <body>
-<my:first/>
+<my:first color = "red"><%= 1+2 %></my:first>
+Custom Tag Test!
 </body>
 </html>
