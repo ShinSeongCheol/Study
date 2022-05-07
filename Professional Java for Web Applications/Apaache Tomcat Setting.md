@@ -13,7 +13,7 @@
 ```
   <user username="admin" password="admin" roles="manager-gui,admin-gui />
 ```
-**톰캣의 웹 관리로 로그인하는데 사용할 수 있는 관리자를 구성하기 위함(공개서버에서 사용할떄는 사용자명과 비멀번호명 변경)**
+**톰캣의 웹 관리로 로그인하는데 사용할 수 있는 관리자를 구성하기 위함(공개서버에서 사용할떄는 사용자명과 비멀번호명 변경)**<br>
 2. C:\Program Files\Apache Software Foundation\Tomcat 10.0\config\web.xml에서 ```<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>``` 밑에 다음과 같은 코드를 추가
 ```
         <init-param>
