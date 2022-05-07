@@ -13,7 +13,7 @@
 ```
   <user username="admin" password="admin" roles="manager-gui,admin-gui />
 ```
-**톰캣의 웹 관리로 로그인하는데 사용할 수 있는 관리자를 구성하기 위함(공개서버에서 사용할떄는 사용자명과 비멀번호명 변경)**<br>
+**톰캣의 웹 관리로 로그인하는데 사용할 수 있는 관리자를 구성하기 위함(공개서버에서 사용할떄는 사용자명과 비멀번호명 변경)**<br/>
 2. C:\Program Files\Apache Software Foundation\Tomcat 10.0\config\web.xml에서 ```<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>``` 밑에 다음과 같은 코드를 추가
 ```
         <init-param>
@@ -34,3 +34,9 @@
             <param-value>modern</param-value>
         </init-param>
 ```
+**톰캣은 JDK파일을 직접 사용하지 못하므로 최신 버전의 ant를 설치하고 jdk의 tools.jar파일과 ant.jar, ant-launcher.jar 파일을 클래스 파일에 추가해야함**
+### 간단하게 설정하는 방법<br />
+```
+set "CLASSPATH=C:\Program Files\Java\jdk1.8.0_321\lib\tools.jar;C:\Program Files\Java\apache-ant-1.10.12\lib\ant.jar;C:\Program Files\Java\apache-ant-1.10.12\lib\ant-launcher.jar"
+```
+<br/> 내용이 들어있는 .bat파일을 작성
