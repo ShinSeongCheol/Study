@@ -183,3 +183,18 @@ response.setHeader("Content-Type", "text/html; charset=UTF-8");
 		<td>jsp:useBean</td>
 	</tr>
 </table>
+
+### jsp 암시적 변수
+<table>
+	<tr>
+		<td>request</td>
+		<td>response</td>
+		<td>session</td>
+		<td>out</td>
+		<td>application</td>
+		<td>config</td>
+		<td>pageContext</td>
+		<td>page</td>
+		<td>exception</td>
+	</tr>
+</table>
