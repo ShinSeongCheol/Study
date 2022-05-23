@@ -146,6 +146,7 @@ response.setHeader("Content-Type", "text/html; charset=UTF-8");
 <%@ page import="java.util.IOException" %>
 ```
 출력 내용이 없는 JSP 는 클라이언트에 빈 행을 출력
+## 지시문 사용
 <table>
 <tr>
 	<th>지시문 속성</th>
@@ -161,4 +162,26 @@ response.setHeader("Content-Type", "text/html; charset=UTF-8");
 	<td>isThreadSafe</td>
 	<td>extends</td>
 </tr>
+</table>
+
+## 다른 JSP 포함
+### 정적 포함
+```
+<@ include file="index.jsp" %>
+```
+### 동적 포함
+```
+<jsp:include page="index.jsp" />
+```
+### jsp 태그
+<table>
+	<tr>
+		<th>jsp 태그 종류</th>
+		<td>jsp:include</td>
+		<td>jsp:forward</td>
+		<td>jsp:userBean</td>
+		<td>jsp:getProperty></td>
+		<td>jsp:setProperty</td>
+		<td>jsp:useBean</td>
+	</tr>
 </table>
