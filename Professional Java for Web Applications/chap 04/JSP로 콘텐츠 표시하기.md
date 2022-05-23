@@ -86,3 +86,79 @@ response.setHeader("Content-Type", "text/html; charset=UTF-8");
 > <%! 선언문 %>   
 > <% 스크립트릿 %>   
 > <%= 식 %>   
+### 지시문
+- 지시문은 인터프리터에 특정한 작업 수행
+- 파일이나 클래스를 가져오는데 사용 
+- 변환시 다른 JSP를 포함하거나 JSP 태그 라이브러리를 포함하도록 지시
+### 선언문
+- JSP 서블릿 클래스의 범위에서 인스턴스 변수, 메서드 또는 클래스를 정의하는데 사용
+- 정의된 모든 클래스는 JSP 서블릿 클래스의 내부 클래스
+### 스크립트릿
+- 선언문과는 범위가 다르다.
+- jspServoce 메서드의 본문에 복사.
+- 로컬변수 정의 가능하지만 인스턴스 변수는 정의 불가.
+- 선언에서 수행할 수 없는 모든 작업 가능(조건문, 객체 조작, 산순 연산 등)
+### 식 
+- 클라이언트 출력으로 기록할 수 있는것을 반환하는 간단한 자바 코드
+- 스크립트릿과 동일한 메서드 범위로 실행
+### 예제
+```
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%!
+	private final int five = 0;
+	protected String comboy = "rodeo";
+	
+	public long addFive(long number){
+		return number + 5L;
+	}
+	
+	public class MyInnerClass{
+	}
+	
+	MyInnerClass instanceVariable = new MyInnerClass();
+%>
+<%
+	class WeridClassWithinMethod {
+	
+	}
+
+	WeridClassWithinMethod weirdClass = new WeridClassWithinMethod();
+	
+	MyInnerClass innerClass = new MyInnerClass();
+	int seven;
+	seven = 7;
+%>
+<%= "Hello, World" %><br />
+<%= addFive(12L) %>
+```
+## 주석
+- \<!-- -->  클라이언트 응답에 보여진다.
+- 선언과 스트릿트 문 안에서 //, /**/
+- <%-- -->
+## JSP 임포트
+```
+<%@ page import="java.util.*,java.io.IOException" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"
+		import="java.util.*,java.io.IOException" 
+%>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.IOException" %>
+```
+출력 내용이 없는 JSP 는 클라이언트에 빈 행을 출력
+<table>
+<tr>
+	<th>지시문 속성</th>
+</tr>
+<tr>
+	<td>pageEncoding</td>
+	<td>session</td>
+	<td>isElIgnored</td>
+	<td>buffer</td>
+	<td>autoFlush</td>
+	<td>errorPage</td>
+	<td>isErrorPage</td>
+	<td>isThreadSafe</td>
+	<td>extends</td>
+</tr>
+</table>
