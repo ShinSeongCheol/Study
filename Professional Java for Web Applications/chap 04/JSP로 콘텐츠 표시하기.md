@@ -150,8 +150,6 @@ response.setHeader("Content-Type", "text/html; charset=UTF-8");
 <table>
 <tr>
 	<th>지시문 속성</th>
-</tr>
-<tr>
 	<td>pageEncoding</td>
 	<td>session</td>
 	<td>isElIgnored</td>
