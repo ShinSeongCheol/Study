@@ -52,3 +52,23 @@ console.log(checkStringOddOrEven('Hello'));
 ```
 module.export로 원하는 값을 코드를 모듈화 시킬 수 있다.
 변수에 require() 함수를 사용하여 변수 값 지정 가능하다.
+
+## 노드 내장 객체
+### global
+- 브라우저의 window와 같은 전역객체
+- 간단한 데이터를 파일끼리 공유할 때 사용
+```
+module.exports = () => global.message;
+```
+```
+const A = require('./globalA');
+
+global.message = '안녕하세요';
+console.log(A());
+```
+### console
+- console.time(레이블)
+- console.timeEnd(레이블)
+- console.error(에러 내용)
+- console.dir(객체, 옵션)
+- console.trace(레이블)
