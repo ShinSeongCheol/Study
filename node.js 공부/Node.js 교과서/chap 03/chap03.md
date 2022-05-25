@@ -72,3 +72,7 @@ console.log(A());
 - console.error(에러 내용)
 - console.dir(객체, 옵션)
 - console.trace(레이블)
+
+### timer
+- setTimeout(콜백함수, 밀리초)
+- setInterval(콜백함수, 밀리초)
