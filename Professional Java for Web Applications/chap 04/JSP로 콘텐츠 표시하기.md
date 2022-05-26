@@ -197,4 +197,25 @@ response.setHeader("Content-Type", "text/html; charset=UTF-8");
 		<td>page</td>
 		<td>exception</td>
 	</tr>
-</table>
+</table>   
+
+## 서블릿과 JSP의 결합
+
+### 배포설명자에 jsp 프로퍼티 구성
+```
+  <jsp-config>
+  	<jsp-property-group>
+  		<url-pattern>*.jsp</url-pattern>
+  		<url-pattern>*.jspf</url-pattern>
+  		<page-encoding>UTF-8</page-encoding>
+  		<scripting-invalid>false</scripting-invalid>
+  		<include-prelude>/WEB-INF/jsp/base.jspf</include-prelude>
+  		<trim-directive-whitespaces>true</trim-directive-whitespaces>
+  		<default-content-type>text/html</default-content-type>
+  	</jsp-property-group>
+  </jsp-config>
+  ```
+  url-pattern과 맡는 그룹에 프로퍼티를 적용
+
+### 서블릿에서 JSP로 요청 전달
+서블릿이 요청을 받고 필요한 비즈니스 로직 처리와 데이터 저장 또는 검색을 수행한 다음 JSP에서 쉽게 사용할 수 있는 모델을 준비하고 요청을 JSP로 전달
