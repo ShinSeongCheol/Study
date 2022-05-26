@@ -76,3 +76,94 @@ console.log(A());
 ### timer
 - setTimeout(콜백함수, 밀리초)
 - setInterval(콜백함수, 밀리초)
+
+### filename, dirname
+- __filename
+- __dirname
+현재 파일명과 파일의 위치를 알려준다.
+```
+console.log(__filename);
+console.log(__dirname);
+```
+
+### process
+코드에 직접 비빌번호를 치는 것은 위험해서 process.env의 SECRET_ID와 SECRET_CODE를 이용하자
+```
+const secretId = process.env.SECRET_ID;
+const secretCode = process.env.SECRET_CODE;
+```
+### process.nextTick
+nextTick은 setTimeout이나 setImmediate보다 먼저 실행된다
+promise도 먼저 실행된다.
+nextTick과 promise를 마이크로태스크라고 부른다.
+
+### process.exit(코드)
+코드 안에 0이나 1을 넣어서 정상정료, 비정상종료를 구분한다.
+서버 외의 독립적인 프로그램에서는 수동으로 노드를 멈추기 위해 사용한다.
+```
+let i = 1;
+setInterval(() => {
+    if( i === 5){
+        console.log('종료!');
+        process.exit();
+    }
+    console.log(i);
+    i += 1;
+}, 1000)
+```
+## 노드 내장 모듈 사용하기
+### os
+```
+const os = require('os');
+
+console.log('운영체제 정보---------------------------------');
+console.log('os.arch():', os.arch());
+console.log('os.platform():', os.platform());
+console.log('os.type():', os.type());
+console.log('os.uptime():', os.uptime());
+console.log('os.hostname9)', os.hostname());
+console.log('os.release():', os.release());
+
+console.log('경로-----------------------------------------');
+console.log('os.homedir():', os.homedir());
+console.log('os.tmpdir()', os.tmpdir());
+
+console.log('cpu 정보-------------------------------------');
+console.log('os.cpus():', os.cpus());
+console.log('os.cpus().length:', os.cpus().length);
+
+console.log('메모리 정보----------------------------------');
+console.log('os.freemem():', os.freemem());
+console.log('os.totalmem():', os.totalmem());
+```
+os 별로 다른 서비스를 제공할 때 유용
+
+### path
+```
+const path = require('path');
+
+const string = __filename;
+
+console.log('path.sep:', path.sep);
+console.log('path.delimiter:', path.delimiter);
+console.log('--------------------------------');
+console.log('path.dirname():', path.dirname(string));
+console.log('path.extname()', path.extname(string));
+console.log('path.basename()', path.basename(string));
+console.log('path.basename():', path.basename(string, path.extname(string)));
+console.log('--------------------------------');
+console.log('path.parse()', path.parse(string));
+console.log('path.format():', path.format({
+    dir: 'C:\\Users\\Shinseongcheol',
+    name: 'path',
+    ext: '.js',
+}));
+console.log('path.normalize():', path.normalize('C://Users\\\\Shinseongcheol\\\path.js'));
+console.log('--------------------------------');
+console.log('path.isAbsolute():', path.isAbsolute('C:\\'));
+console.log('path.isAbsolute():', path.isAbsolute('./home'));
+console.log('--------------------------------');
+console.log('path.relative():', path.relative('C:\\users\\Shinseongcheol\\path.js', 'C:\\'));
+console.log('path.join():', path.join(__dirname, '..', '..', '/users', '.', '/Shinseongcehol'));
+console.log('path.resolve()', path.resolve(__dirname, '..', 'users', '.', '/Shinseongcheol'));
+```
