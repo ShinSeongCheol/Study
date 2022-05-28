@@ -222,3 +222,50 @@ console.log('base64:', crypto.createHash('sha512').update('비밀번호').digest
 console.log('hex:', crypto.createHash('sha512').update('비밀번호').digest('hex'));
 console.log('base64:', crypto.createHash('sha512').update('다른 비밀번호').digest('base64'));
 ```
+#### pbkdf2
+```
+const crypto = require('crypto');
+
+crypto.randomBytes(64, (err, buf) => {
+    const salt = buf.toString('base64');
+    console.log('salt:', salt);
+    crypto.pbkdf2('비밀번호', salt, 100000, 64, 'sha512', (err, key) => {
+        console.log('password', key.toString('base64'));
+    });
+});
+```
+### 양방향 암호화
+```
+const crypto = require('crypto');
+const algorithm = 'aes-256-cbc';
+const key = crypto.randomBytes(32);
+const iv = crypto.randomBytes(16);
+
+function encrypt(text){
+    let cipher = crypto.createCipheriv(algorithm, Buffer.from(key), iv);
+    let encrypted = cipher.update(text);
+    encrypted = Buffer.concat([encrypted, cipher.final()]);
+
+    return { iv : iv.toString('hex'),
+    encryptedData : encrypted.toString('hex') };
+}
+
+function decrypt(text){
+    let iv = Buffer.from(text.iv, 'hex');
+    let encryptedText = Buffer.from(text.encryptedData, 'hex');
+
+    let decipher = crypto.createDecipheriv(algorithm, Buffer.from(key), iv);
+
+    let decrypted = decipher.update(encryptedText);
+    decrypted = Buffer.concat([decrypted, decipher.final()]);
+
+    return decrypted.toString();
+}
+
+const output = encrypt('암호화 문장');
+console.log(output);
+console.log(decrypt(output));
+```
+
+### util
+각종 편의 기능을 모아둔 모듈
