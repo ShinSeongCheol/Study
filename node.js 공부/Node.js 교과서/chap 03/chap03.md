@@ -288,3 +288,90 @@ randomByytesPromise(64)
 });
 ```
 randomBytesPromise는 오류가 발생함
+
+### fs
+fs는 파일 시스템에 접근하는 모듈
+- readFile(경로, 콜백함수(err, data))
+- writeFile()
+비동기적으로 실행
+- readFileSync(경로)
+- writeFileSync(경로, 데이터)
+동기적으로 실행
+
+비동기적으로 실행하되 순서를 유지하고 싶으면 콜백함수 안에 넣기. 
+콜백 지옥이 펼쳐짐
+
+promise나 async/await로 어느 정도 해결할 수 있다.
+
+### buffer
+메모리에 저장된 데이터
+버퍼를 직접 다룰 수 있는 클래스는 Buffer
+
+```
+const buffer = Buffer.from('저를 버퍼로 바꿔주세요');
+console.log('from():', buffer);
+console.log('length:', buffer.length);
+console.log('toString()', buffer.toString());
+
+const array = [Buffer.from('띄엄 '), Buffer.from('띄엄 '), Buffer.from('띄어쓰기')];
+const buffer2 = Buffer.concat(array);
+console.log('concat():', buffer2.toString());
+
+const buffer3 = Buffer.alloc(5);
+console.log('alloc():', buffer3);
+
+```
+
+### stream
+버퍼의 크기를 작게 만들어 여러번 보내는 것
+나눠진 조각은 chunck
+#### readStream
+```
+const fs = require('fs');
+
+const readStream = fs.createReadStream('./readme3.txt', {highWaterMark: 16});
+const data = [];
+
+readStream.on('data', (chunck) => {
+    data.push(chunck);
+    console.log('data :', chunck, chunck.length, chunck.toString());
+});
+
+readStream.on('end', () => {
+    console.log('end :', Buffer.concat(data).toString());
+});
+
+readStream.on('error', (err) => {
+    console.log('error :', err);
+});
+```
+readStream에는 on 메서드가 사용되고 data, end, error와 같은 이벤트 리스너를 사용한다.
+
+#### writeStream
+```
+const fs = require('fs');
+
+const writeStream = fs.createWriteStream('./writeme2.txt');
+writeStream.on('finish', () => {
+    console.log('파일 쓰기 완료');
+});
+
+writeStream.write('이 글을 씁니다.\n');
+writeStream.write('한 번 더 씁니다.');
+writeStream.end();
+```
+finish 이벤트 리스너는 writeStream.end()가 실행된후 콜백함수가 실행됨.
+
+#### pipe
+```
+const fs = require('fs');
+
+const readStream = fs.createReadStream('./readme4.txt');
+const writeStream = fs.createWriteStream('./writeme3.txt');
+
+readStream.pipe(writeStream);
+```
+
+읽은 파일 내용을 연결
+
+#### 압축
