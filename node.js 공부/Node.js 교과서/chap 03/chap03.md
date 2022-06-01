@@ -419,3 +419,38 @@ fs.access('./folder', fs.constants.F_OK | fs.constants.R_OK | fs.constants.W_OK,
     }
 });
 ```
+#### 파일 폴더 삭제
+```
+const fs = require('fs');
+
+fs.readdir('./folder', (err, dir) =>{
+    if(err){
+        throw err;
+    }
+    console.log('폴더 내용 확인', dir);
+    fs.unlink('./folder/newFile.js', (err) => {
+        if(err) {
+            throw err;
+        }
+        console.log('파일 삭제 성공');
+        fs.rmdir('./folder', (err) => {
+            if(err) {
+                throw err;
+            }
+            console.log('폴더 삭제 성공');
+        });
+    });
+});
+```
+
+#### 파일 복사
+```
+const fs = require('fs');
+
+fs.copyFile('readme4.txt', 'writeme4.txt', (error) => {
+    if(error){
+        return console.error(error);
+    }
+    console.log('복사 완료');
+});
+```
