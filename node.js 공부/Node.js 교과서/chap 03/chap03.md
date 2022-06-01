@@ -454,3 +454,78 @@ fs.copyFile('readme4.txt', 'writeme4.txt', (error) => {
     console.log('복사 완료');
 });
 ```
+
+#### 이벤트 
+```
+const EventEmitter = require('events');
+
+const myEvent = new EventEmitter();
+myEvent.addListener('event1', () => {
+    console.log('이벤트 1');
+});
+myEvent.on('event2', () => {
+    console.log('이벤트 2');
+});
+
+myEvent.emit('event1');
+myEvent.emit('event2');
+
+myEvent.once('event3', () => {
+    console.log('이벤트 3');
+});
+myEvent.emit('event3');
+myEvent.emit('event3');
+
+myEvent.on('event4', () => {
+    console.log('이벤트 4');
+});
+myEvent.removeAllListeners('event4');
+
+const listener = () => {
+    console.log('이벤트 5');
+};
+myEvent.on('event5', listener);
+myEvent.removeListener('event5', listener);
+myEvent.emit('event5');
+
+console.log(myEvent.listenerCount('event2'));
+```
+
+### 예외 처리하기
+
+```
+setInterval(() => {
+    console.log('시작');
+    try{
+        throw new Error('서버를 고장내주마!');
+    }catch(err) {
+        console.error(err);
+    }
+}, 1000);
+```
+
+```
+const fs = require('fs');
+
+setInterval(() => {
+    fs.unlink('./abcdefg.js', (err) => {
+        if(err) {
+            console.error(err);
+        }
+    });
+}, 1000);
+```
+
+```
+process.on('uncaughtException', (err) => {
+    console.error('예기치 못한 에러', err);
+});
+
+setInterval(() => {
+    throw new Error('서버를 고장내주마!');
+}, 1000);
+
+setTimeout(() => {
+    console.log('실행됩니다.');
+}, 2000);
+```
