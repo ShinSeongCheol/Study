@@ -1,0 +1,1 @@
+var person, $elem, _name, fisrt_name, val1;
