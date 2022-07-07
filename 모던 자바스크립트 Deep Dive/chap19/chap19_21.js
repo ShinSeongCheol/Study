@@ -1,0 +1,1 @@
+console.log(global.Object === Object);
