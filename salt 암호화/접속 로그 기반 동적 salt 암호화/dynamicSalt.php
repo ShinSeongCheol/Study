@@ -37,18 +37,19 @@
                 $datetime = $latest;
                 $latest = date("Y-m-d").' '.date('H:i:s');
                 $login_count = $login_count + 1;
+                $ip = $_SERVER['REMOTE_ADDR'];
                 $password = $_POST['pwd'];
                 
                 $password = getSaltString($datetime, $latest, $login_count, $password);
                 
-                mysqli_query($con, "UPDATE member SET datetime = '$datetime', latest = '$latest', login_count = '$login_count', password = '$password'");
+                mysqli_query($con, "UPDATE member SET datetime = '$datetime', latest = '$latest', login_count = '$login_count', password = '$password', ip = '$ip'");
 
                 $result = mysqli_query($con, "SELECT * FROM member WHERE account = '$account'");
                 $row = mysqli_fetch_row($result);
                 
                 echo("<h1> 변경된 값 </h1>");
                 printTable($row);
-                
+
             }
             else {
                 echo("<h1> 비밀번호 틀림! </h1>");
