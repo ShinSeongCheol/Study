@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calender_test</title>
+    <script type="text/javascript">
+        // <![CDATA[
+        var date = new Date();
+        var y = date.getFullYear();
+        var m = date.getMonth();
+        var d = date.getDate();
+
+        var theDate = new Date(y, m, 1);
+        var theDay = theDate.getDay();
+
+        var last = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        if (y % 4 && y % 100 != 0 || y % 400 == 0) {
+            lastDate = last[1] = 29;
+        }
+        var lastDate = last[m];
+
+        var row = Math.ceil((theDay + lastDate) / 7);
+        document.write("<h1>" + y + "." + (m + 1) + "</h1>");
+
+        var calender = "<table border='1'>";
+        calender += "<tr>";
+        calender += "<th>일</th>";
+        calender += "<th>월</th>";
+        calender += "<th>화</th>";
+        calender += "<th>수</th>";
+        calender += "<th>목</th>";
+        calender += "<th>금</th>";
+        calender += "<th>토</th>";
+        calender += "</tr>";
+
+        var dNum = 1;
+        for(var i=1; i<=row; i++) {
+            calender +="<tr>";
+            for(var k=1; k<=7; k++) {
+                if(i==1 && k<=theDay || dNum > lastDate) {
+                    calender += "<td> &nbsp; </td>";
+                }
+                else {
+                    calender += "<td>" + dNum + "</td>";
+                    dNum++;
+                }
+            }
+            calender += "</tr>";
+        }
+
+        document.write(calender);
+        // ]]>
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
