@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event_3_test</title>
+    <script type="text/javascript">
+        function chColor(obj, state) {
+            var myColor;
+            if(state == "over") {
+                myColor = "red";
+            }
+            else {
+                myColor = "black";
+            }
+            obj.style.color = myColor;
+        }
+    </script>
+</head>
+<body>
+    <button onmouseover="chColor(this, 'over');" onmouseout="chColor(this,'out');">마우스 아웃</button>
+</body>
+</html>
