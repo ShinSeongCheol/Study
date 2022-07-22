@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq_selec3_13_test</title>
+    <script src="../jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("<li>새 내용 추가 1</li>").insertBefore("#myList");
+            var copyObj = $("#myList").clone();
+            $(copyObj).insertAfter("#myList");
+        });
+    </script>
+</head>
+<body>
+    <ul>
+        <li id="myList">내용</li>
+    </ul>
+</body>
+</html>

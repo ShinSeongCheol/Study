@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq_selec3_7_test</title>
+    <script src="../jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#st_1").prop("title", "단락 태그");
+            $("#txt1").text($("#st_1").prop("title"));
+            $("#txt2").text($("#st_1").prop("tagName"));
+            $("#txt3").text($("#sel").prop("selectedIndex"));
+        });
+    </script>
+</head>
+<body>
+    <p id="st_1">내용1</p>
+    <p id="txt1"></p>
+    <p id="txt2"></p>
+    <select id="sel">
+        <option value="naver">네이버</option>
+        <option value="nate" selected="selected">네이트</option>
+        <option value="daum">다음</option>
+    </select>
+    <p id="txt3"></p>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jq_selec3_3_test</title>
+    <script src="../jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("p").text($("h1").css("color"));
+            $("h2").css("color", "red");
+        })
+    </script>
+</head>
+<body>
+    <h1 style="color:blue">객체 조작 및 생성</h1>
+    <p></p>
+    <h2>CSS 메서드</h2>
+</body>
+</html>
