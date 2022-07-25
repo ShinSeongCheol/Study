@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event_last_test</title>
+    <style type="text/css">
+        body {font: 12px dotum, "돋움", sans-serif; margin: 20px;}
+        #f_wrap df {font-weight: bold; margin-top: 10px;}
+        #txt_wrap {width:90%; margin-top:20px};
+    </style>
+    <script src="../jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var size = 0;
+            var body = $("body");
+            $(".zoom button").on("click", function(){
+                var btn_index = $(".zoom button").index(this);
+                if(btn_index == 0) {
+                    size++;
+                    body.css("font-size", size+"px");
+                }
+                else if(btn_index == 1) {
+                    size = 12;
+                    body.css("font-size", size+"px");
+                }
+                else{
+                    size--;
+                    body.css("font-size", size+"px");
+                }
+            });
+
+            $("#fs").on("change", function(){
+                body.css("font-family", $(this).val());
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="f_wrap">
+        <dl>
+            <dt>글자 크기</dt>
+            <dd class="zoom">
+                <button>+</button>
+                <button>0</button>
+                <button>-</button>
+            </dd>
+            <dt>글자모양</dt>
+            <dd class="f_style">
+                <select name="fs" id="fs">
+                    <option value="dotum, '돋움', sans-serif">돋움</option>
+                    <option value="gulim, '굴림, sans-serif">굴림</option>
+                    <option value="magun gothic, '맑은 고딕', sans-serif">맑은 고딕</option>
+                    <option value="magun gothic, '맑은 고딕', serif">궁서</option>
+                </select>
+            </dd>
+        </dl>
+    </div>
+    <p id="txt_wrap">
+        안녕하세요 반갑습니다.
+    </p>
+</body>
+</html>

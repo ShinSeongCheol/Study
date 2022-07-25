@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery_event_this_test</title>
+    <script src="../jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#btn").mouseover(function(){
+                $(this).css("border", "2px solid red");
+                $(this).text("MouseOver");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="btn">마우스 오버</button>
+</body>
+</html>

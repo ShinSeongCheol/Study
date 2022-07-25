@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery_event_index_test</title>
+    <script src="../jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#menu a").mouseover(function(){
+                $("#menu a").css("background", "none");
+                $(this).css("background", "yellow");
+                var num = $("#menu a").index(this);
+                $(".txt").text(num);
+            });
+        });
+    </script>
+</head>
+<body>
+    <ul id="menu">
+        <li><a href="#">내용1</a></li>
+        <li><a href="#">내용2</a></li>
+        <li><a href="#">내용3</a></li>
+        <li><a href="#">내용4</a></li>
+    </ul>
+    <p class="txt"></p>
+</body>
+</html>
