@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery_ajax_2_test.html</title>
+    <script src="../jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#member").on("submit", function(){
+                var d = $(this).serialize();
+
+                $.ajax({
+                    url:"member.php",
+                    type:"post",
+                    data:d,
+                    success:function(result) {
+                        $("#txt1").text(result);
+                        console.log(result);
+                    }
+                });
+                return false;
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <form name="member" id="member">
+        <fieldset>
+            <legend>회원가입</legend>
+            <p>
+                <label for="user_name">이름</label>
+                <input type="text" name="user_name" id="user_name" />
+            </p>
+            <p><input type="submit" value="확인" /></p>
+        </fieldset>
+    </form>
+    <h1 id="txt1"></h1>
+</body>
+</html>
