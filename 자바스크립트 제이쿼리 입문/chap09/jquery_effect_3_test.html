@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery_effect_3_test</title>
+    <script src="../jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#btn1").on("click", function(){
+                $("h1").fadeIn(1000);
+            });
+
+            $("#btn2").on("click", function(){
+                $("h1").fadeOut("slow");
+            });
+
+            $("#btn3").on("click", function(){
+                $("h1").fadeToggle("fast");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="btn1">fadeIn</button>
+    <button id="btn2">fadeOut</button>
+    <button id="btn3">fadeToggle</button>
+    <h1>내용</h1>
+</body>
+</html>

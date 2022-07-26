@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery_effect_5_test.html</title>
+    <style>
+        h1 {
+            width: 300px;
+            height: 200px;
+            background-color: #FF0;
+        }
+    </style>
+    <script src="../jquery-1.10.2.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#btn1").on("click", function(){
+                $("h1").slideUp(1000);
+            });
+
+            $("#btn2").on("click", function(){
+                $("h1").slideDown("slow");
+            });
+
+            $("#btn3").on("click", function(){
+                $("h1").slideToggle("fast");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <button id="btn1">slideUp</button>
+    <button id="btn2">slideDown</button>
+    <button id="btn3">slideToggle</button>
+    <h1>내용</h1>
+</body>
+
+</html>
