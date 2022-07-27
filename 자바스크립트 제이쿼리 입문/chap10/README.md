@@ -8,3 +8,9 @@
 - 외부데이터로 텍스트, HTML, XML, JSON 유형등이 있다.
 - 선택한 요소에 Ajax를 이용해 요청한 외부데이터를 불러올 수 있다.
 - jquery_ajax_2_test.html, member.php
+### xml 데이터 요청하기
+- jquery_ajax_3_test.html, rank_test.xml
+### json 데이터 요청하기
+- jquery_ajax_4_test.html, rank_test.json
+### Ajax로 RSS 연동하기
+- jquery_ajax_rss_test.html
