@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <title>jquery_plugin_2_test</title>
+
+    <style type="text/css">
+        * {margin:0; padding:0;}
+        img {border:none 0; vertical-align:top; width:300px;}
+        #banner_wrap {position: relative; width:470px; margin:0 auto;}
+        #preBtn {position: absolute; left:0; top:10px;}
+        #nextBtn {position: absolute; right:15px; top:10px;}
+    </style>
+
+    <script type="text/javascript">
+        $(function(){
+            var mySlider = $("#slide_banner").bxSlider({
+                mode:"horizontal",
+                speed: 500,
+                pager: false,
+                moveSlides: 1,
+                slideWidth: 90,
+                minSlides: 4,
+                maxSlides: 4,
+                slideMargin: 10,
+                auto: true,
+                autuHover: true,
+                controls: false
+            });
+
+            $("#preBtn").on("click", function(){
+                mySlider.goToPrevSlide();
+                return false;
+            });
+
+            $("#nextBtn").on("click", function(){
+                mySlider.goToNextSlide();
+                return false;
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="banner_wrap">
+        <ul id="slide_banner">
+            <li><a href="#"><img src="../chap09/images/슬라이드1.PNG" alt="사진1"/></a></li>
+            <li><a href="#"><img src="../chap09/images/슬라이드2.PNG" alt="사진2"/></a></li>
+            <li><a href="#"><img src="../chap09/images/슬라이드3.PNG" alt="사진3"/></a></li>
+            <li><a href="#"><img src="../chap09/images/슬라이드4.PNG" alt="사진4"/></a></li>
+            <li><a href="#"><img src="../chap09/images/슬라이드5.PNG" alt="사진5"/></a></li>
+            <li><a href="#"><img src="../chap09/images/슬라이드6.PNG" alt="사진6"/></a></li>
+            <li><a href="#"><img src="../chap09/images/슬라이드7.PNG" alt="사진7"/></a></li>
+            <li><a href="#"><img src="../chap09/images/슬라이드8.PNG" alt="사진8"/></a></li>
+        </ul>
+        <p><button id="preBtn"></button></p>
+        <p><button id="nextBtn"></button></p>
+    </div>
+</body>
+
+</html>
