@@ -31,12 +31,4 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    'sparkpost' => [
-        'secret' => 'abcdefg',
-    ],
-
-    'bugsnag' => [
-        'api_key' => env('BUGSNAG_API_KEY'),
-    ],
-
 ];
