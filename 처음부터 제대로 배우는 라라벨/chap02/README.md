@@ -3,6 +3,11 @@
 ## 로컬 개발 환경
 ### 라라벨 발렛
 ### 라라벨 홈스테드
+#### 요구 사항
+- 버추얼 박스, vmware와 같은 가상화 소프트웨어
+- <a href="https://www.vagrantup.com/downloads">베이그런트</a>
+#### 설치
+- <a href="https://laravel.kr/docs/9.x/homestead">라라벨 메뉴얼</a>
 ## 라라벨 프로젝트 생성하기
 ### 라라벨 인스톨러를 사용해서 라라벨 프로젝트 설치하기
 ``` composer global require "laravel/installer" ```   
