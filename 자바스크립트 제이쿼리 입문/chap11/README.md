@@ -11,3 +11,5 @@
 ### swipejs 플러그인 다운로드
 - <a href="https://github.com/bradbirdsall/Swipe">swipejs</a>
 - jquery_plugin_4_test.html
+### bxSlider 플러그인을 활용하여 갤러리 만들기
+- jquery_plugin_last_test.html
