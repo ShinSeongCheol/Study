@@ -6,4 +6,5 @@
     $mariaDb.setSql("SELECT * FROM member");
     $row = $mariaDb.getResult();
     echo($row["id"]);
+    echo($row["password"]);
 ?>
