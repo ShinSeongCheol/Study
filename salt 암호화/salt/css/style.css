@@ -36,15 +36,17 @@ button {
     margin-top:30px;
 }
 
-.wrapper h1 {
-    position: absolute;
-    top: 40%;
+ .wrapper h1 {
+    position: relative;
+    width:500px;
+    text-align:center;
+    top: -30%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
     font-size: 300%;
     text-shadow: 1px 1px 2px white;
-}
+} 
 
 .w-btn {
     position: relative;
