@@ -3,9 +3,8 @@
     include_once "userInfo.php";
     include_once "salt.php";
 
-    $db = new mariaDb("localhost", "root", "seongcheol", "seongcheol");
+    $db = new mariaDb();
     $userInfo = new userInfo();
-    $salt = new salt();
 
     $registerForm = explode("&", $_POST["registerForm"]);
 
@@ -16,8 +15,5 @@
     $userInfo -> setLoginCount(0);
     $userInfo -> setIp($_SERVER["REMOTE_ADDR"]);
 
-    $salt -> setUserInfo($userInfo);
-
     $db -> registerUser($userInfo);
-    $db -> close();
 ?>

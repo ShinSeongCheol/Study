@@ -1,4 +1,5 @@
 <?php
+
     class userInfo {
 
         private $id;
@@ -56,10 +57,9 @@
             return $this -> ip;
         }
 
-        public function countVar() {
-            $array = array("id" => $this -> getId(), "password" => $this -> getPassword(), "latest" => $this -> getLatest(), "datetime" => $this -> getDatetime(), "loginCount" => $this -> getLoginCount(), "ip" => $this -> getIp());
-            return count($array);
+        public function userInfoArray() {
+            $array = array($this -> getId(), $this -> getPassword(), $this -> getLatest(), $this -> getDatetime(), $this -> getLoginCount(), $this -> getIp());
+            return $array;
         }
-
     }
 ?>
