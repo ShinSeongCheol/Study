@@ -57,6 +57,7 @@
             return $this -> ip;
         }
 
+        //클래스 멤버 변수의 개수를 구하고 싶음.
         public function userInfoArray() {
             $array = array($this -> getId(), $this -> getPassword(), $this -> getLatest(), $this -> getDatetime(), $this -> getLoginCount(), $this -> getIp());
             return $array;

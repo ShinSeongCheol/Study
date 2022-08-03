@@ -16,10 +16,12 @@
 
         if($encryptedPassword = $db -> checkPassword($userInfo)){
             if($newPassword = $db -> updatePassword($userInfo)){
+
                 $result["success"] = true;
                 $result["oldPassword"] = $encryptedPassword;
                 $result["newPassword"] = $newPassword;
                 echo(json_encode($result));
+                
             }
             else {
                 echo("로그인 실패");

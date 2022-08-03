@@ -1,9 +1,5 @@
 <?php
     class salt{
-
-        //몇개를  salt 암호화 조합으로 사용할지 정하기
-        //팩토리얼 구하기
-        //조합 구하기
         
         private function getFactorial($num) {
             $result = 1;
@@ -15,11 +11,11 @@
             return $result;
         }
         
-        //복잡함, 의존성 많음 수정계획하겠음
         public function encryptPassword($arr, $password) {
             $count = count($arr);
             $mod = unpack("I", $password)[1] % $this -> getFactorial($count);
             
+            //중복없는 순열 알고리즘, 배열의 수만큼 중복없는 순열을 구하는 알고리즘으로 바꿔야 함. (시간 복잡도가 너무 큼)
             for($i1=0; $i1<$count; $i1++) {
                 for($i2=0; $i2<$count; $i2++) {
                     for($i3=0; $i3<$count; $i3++) {
