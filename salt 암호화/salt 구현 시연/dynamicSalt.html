@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./jquery.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="wrapper2">
+            <h1><img src="./images/salt.png" alt="salt" />Salt 암호화</h1>
+
+            <button type="button" id="startButton" class="w-btn-neon2">시작</button>
+            <button type="button" id="loginButton" class="w-btn-neon2" style="display:none;">로그인</button>
+            <button type="button" id="registerButton" class="w-btn-neon2" style="display:none;">회원가입</button>
+
+            <div id="loginBox" style="display: none;">
+                <form id="loginF" name="loginF">
+                    <input type="text" id="loginId" name="loginId" class="idInput" placeholder="아이디를 입력해주세요" /><br>
+                    <input type="password" id="loginPassword" name="loginPassword" class="passwordInput" placeholder="비밀번호를 입력해주세요" /> <br>
+                    <button type="button" id="confirmLogin" class="w-btn-neon2">확인</button>
+                    <button type="button" id="retryLogin" class="w-btn-neon2">뒤로가기</button>
+                </form>
+            </div>
+
+            <div id="registerBox" style="display: none;">
+                <form id="registerForm" name="registerForm">
+                    <input type="text" id="registerId" name="registerId" class="idInput" placeholder="아이디를 입력해주세요" /><br>
+                    <input type="password" id="registerPassword" name="registerPassword"  class="passwordInput" placeholder="비밀번호를 입력해주세요" />
+                    <br>
+                    <button type="button" id="confirmRegister" class="w-btn-neon2">확인</button>
+                    <button type="button" id="retryRegister" class="w-btn-neon2">뒤로가기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
