@@ -14,3 +14,11 @@
 - chap19_44.js
 - 생성자 함수와 프로토 타입 간의 연결 되살리기
 - chap19_45.js
+### instanceof 연산자
+- 우변의 생성자 함수의 prototype에 바인딩된 객체가 좌변의 객체의 프로토타입 체인 상에 존재하면 true로 평가되고 그렇지 않으면 false로 평가
+- chap19_46.js
+- chap19_47.js
+- instanceof 연산자는 생성자 함수의 prototype에 바인딩된 객체가 프로토타입 체인 상에 존재하는지 확인
+- chap19_48.js
+- chap19_49.js 연산자 함수 구현
+- chap19_50.js 프로퍼티와 생성자 함수의 연결이 파괴되어도 생성자 함수의 prototype 프로토타입 간의 연결은 파괴되지 않으므로 instanceof는 아무런 영향을 받지않는다.
