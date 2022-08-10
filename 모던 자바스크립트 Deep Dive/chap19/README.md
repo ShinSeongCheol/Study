@@ -66,12 +66,14 @@
 ### for ... in 문
 - 객체의 모든 프로퍼티를 순회하며 열거 하려면 for ... in 문을 사용한다.
 - for (변수 선언문 in 객체)
-- for ... in 예제 [chap19_64.js]
+- for ... in 예제
+  -  [chap19_64.js]
 - Object.prototype의 toString메서드는 열거할 수 없도록 정의되어 있다.
-- Object.prototype.toString 프로퍼티의 프로퍼티 어트리뷰트의 [[Enumerable]]값이 false이기 때문이다. [chap19_65.js] 
+- Object.prototype.toString 프로퍼티의 프로퍼티 어트리뷰트의 [[Enumerable]]값이 false이기 때문이다.
+  -  [chap19_65.js] 
 - false 확인 예제 [[Enumerable]]
 - **for ... in 문은 객체의 프로토 타입 체인 상에 존재하는 모든 프로토타입의 프로퍼티 중에서 프로퍼티 어트리뷰트 [[Enumerable]]의 값이 true인 프로퍼티를 순회하며 열거한다.**
-- [chap19_67.js]
+  - [chap19_67.js]
 - for ... in 문은 프로퍼티 키가 심벌인 프로퍼티는 열거하지 않는다.
   -  [chap19_68.js]
 - Object.hasOwnProperty 메서드를 사용하여 상속받은 프로퍼티 제외하고 객체 자신의 프로퍼티만 열거
