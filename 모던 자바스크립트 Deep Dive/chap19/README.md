@@ -62,3 +62,13 @@
   - Object.prototype.hasOwnProperty 메서드는 Object.prototype의 메서드 이므로 모든 객체가 호출할 수 있다.
     - [chap19_57.js]
   - 
+## 프로퍼티 열거
+### for ... in 문
+- 객체의 모든 프로퍼티를 순회하며 열거 하려면 for ... in 문을 사용한다.
+- for (변수 선언문 in 객체)
+- for ... in 예제 [chap19_64.js]
+- Object.prototype의 toString메서드는 열거할 수 없도록 정의되어 있다.
+- Object.prototype.toString 프로퍼티의 프로퍼티 어트리뷰트의 [[Enumerable]]값이 false이기 때문이다. [chap19_65.js] 
+- false 확인 예제 [[Enumerable]]
+- **for ... in 문은 객체의 프로토 타입 체인 상에 존재하는 모든 프로토타입의 프로퍼티 중에서 프로퍼티 어트리뷰트 [[Enumerable]]의 값이 true인 프로퍼티를 순회하며 열거한다.**
+- [chap19_67.js]
