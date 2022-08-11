@@ -68,4 +68,32 @@
   - [chap19_59.js]
 - in 연산자는 확인 대상 객체의 프로퍼티뿐만 아니라 확인 대상 객체가 상속 받은 모든 프로토 타입의 프로퍼티를 확인한다.
   - [cahp19_60.js]
-- 
+## 프로퍼티 열거
+### for ... in 문
+- 객체의 모든 프로퍼티를 순회하며 열거 하려면 for ... in 문을 사용한다.
+- for (변수 선언문 in 객체)
+- for ... in 예제
+  -  [chap19_64.js]
+- Object.prototype의 toString메서드는 열거할 수 없도록 정의되어 있다.
+- Object.prototype.toString 프로퍼티의 프로퍼티 어트리뷰트의 [[Enumerable]]값이 false이기 때문이다.
+  -  [chap19_65.js] 
+- false 확인 예제 [[Enumerable]]
+- **for ... in 문은 객체의 프로토 타입 체인 상에 존재하는 모든 프로토타입의 프로퍼티 중에서 프로퍼티 어트리뷰트 [[Enumerable]]의 값이 true인 프로퍼티를 순회하며 열거한다.**
+  - [chap19_67.js]
+- for ... in 문은 프로퍼티 키가 심벌인 프로퍼티는 열거하지 않는다.
+  -  [chap19_68.js]
+- Object.hasOwnProperty 메서드를 사용하여 상속받은 프로퍼티 제외하고 객체 자신의 프로퍼티만 열거
+  -  [chap19_69.js]
+- for ... in 문은 프로퍼티를 열거할때 순서를 보장하지 않는다
+  -  [chap19_70.js]
+- 배열에는 for ... in 문을 사용하지 말고 for문, for ... of, Array.prototype.forEach 메서드를 사용하기를 권장
+- 배열도 객체이므로 프로퍼티와 상속받은 프로퍼티가 포함될 수 있다.
+  -  [chap19_71.js]
+## Object.keys/values/entries 메서드
+- 객체 자신의 고유 프로퍼티를 열거하기 위해서는 Object.keys/values/entries 메서드를 사용하는것이 권장된다.
+- Object.keys 메서드는 객체 자신의 열거 가능한 프로퍼티 키를 배열로 반환한다.
+  -  [chap19_72.js]
+- ES8에서 도입된 Object.values 메서드는 객체 자신의 열거 가능한 프로퍼티 값을 배열로 반환한다.
+  -  [chap19_73.js]
+- ES8에서 도입된 Object.entries 메서드는 객체 자신의 열거 가능한 프로퍼티 키와 값의 쌍의 배열을 배열에 담아 반환한다. 
+  - [chap19_74.js]
