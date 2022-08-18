@@ -15,7 +15,6 @@
             $count = count($arr);
             $mod = unpack("I", $password)[1] % $this -> getFactorial($count);
             
-            //중복없는 순열 알고리즘, 배열의 수만큼 중복없는 순열을 구하는 알고리즘으로 바꿔야 함. (시간 복잡도가 너무 큼)
             for($i1=0; $i1<$count; $i1++) {
                 for($i2=0; $i2<$count; $i2++) {
                     for($i3=0; $i3<$count; $i3++) {
