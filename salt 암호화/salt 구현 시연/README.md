@@ -31,3 +31,27 @@
 - css
 ### 사용된 모듈
 - jQuery v3.6.0
+### 데이터베이스 테이블 구조
+![image](https://user-images.githubusercontent.com/46277114/185273825-972f180a-6b9a-48e1-9f1a-c336ae997c3e.png)
+### 구현 화면
+#### 메인 화면
+![image](https://user-images.githubusercontent.com/46277114/185273916-5008da28-b025-45cb-a66e-285563205f78.png)
+#### 시작 버튼 누른 화면
+![image](https://user-images.githubusercontent.com/46277114/185273984-b2a2cbf1-cb1b-4618-bc8f-9176fc7e0e6f.png)
+#### 회원가입 화면
+![image](https://user-images.githubusercontent.com/46277114/185274029-3d3ec5a7-2fc0-4126-87de-433e3086cdb0.png)
+#### 로그인 화면
+![image](https://user-images.githubusercontent.com/46277114/185274082-9aa3d9cb-defb-405e-a8df-2c0946e4240f.png)
+#### 로그인 성공 화면
+##### 첫번째 로그인
+![image](https://user-images.githubusercontent.com/46277114/185274159-b939b9e3-172d-430e-8213-445e3a9d1dd5.png)
+##### 두번째 로그인
+![image](https://user-images.githubusercontent.com/46277114/185274217-ef96c290-5d4a-4d0f-a712-6dcc20e663d5.png)
+##### 세번째 로그인
+![image](https://user-images.githubusercontent.com/46277114/185274276-54c5c8c0-5c4e-40a5-9c31-7de75e9b04bb.png)
+### 결론
+접속로그 기반 동적 솔트는 사용자의 패스워드를 정수화 하여 (N+1)!개의 가변적인 솔트와 고정적인 솔트들의 조합중 하나를 선택하여 패스워드를 해시값을 생성하여 공격자가 데이터베이스나 소스코드를 알더라도 어떤 솔트 조합을 사용하여 패스워드를 해시화 하였는지 알수 없다.
+
+
+
+
