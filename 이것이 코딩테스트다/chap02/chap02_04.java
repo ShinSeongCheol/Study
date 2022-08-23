@@ -10,11 +10,10 @@ public class chap02_04 {
         int K = sc.nextInt();
         int count = 0;
 
-        while(N != 1) {
-            if(N % K == 0) {
+        while (N != 1) {
+            if (N % K == 0) {
                 N = N / K;
-            }
-            else {
+            } else {
                 N = N - 1;
             }
             count++;
