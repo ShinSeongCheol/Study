@@ -1,33 +1,55 @@
 package chap05;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class chap05_10 {
-    public static void main(String[] args) {
+
+    private static ArrayList<ArrayList<Integer>> graph = new ArrayList<ArrayList<Integer>>();
+    private static int N, M;
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int M = sc.nextInt();
+        N = sc.nextInt();
+        M = sc.nextInt();
         sc.nextLine();
-        int[][] tray = new int[N][M];
 
         for(int i=0; i<N; i++) {
+            graph.add(new ArrayList<Integer>());
             String str = sc.nextLine();
             for(int j=0; j<M; j++) {
-                tray[i][j] = str.charAt(j) - '0';
+                graph.get(i).add(str.charAt(j) - '0');
             }
         }
 
-
-
-        for(int[] i : tray) {
-            for(int j : i) {
-                System.out.print(j + " ");
+        int result = 0;
+        for(int i=0; i<=N; i++) {
+            for(int j=0; j<=M; j++) {
+                if(dfs(i, j)){
+                    result ++;
+                }
             }
-            System.out.println();
         }
+
+        for(int i=0; i<N; i++) {
+            System.out.println(graph.get(i));
+        }
+        System.out.println(result);
     }
 
-    public static int dfs() {
+    private static boolean dfs(int x, int y) {
+        if (x <= -1 || x >= N || y <= -1 || y >= N) {
+            return false;
+        }
 
+        if(graph.get(x).get(y) == 0) {
+            graph.get(x).set(y, 1);
+            dfs(x-1, y);
+            dfs(x, y-1);
+            dfs(x+1, y);
+            dfs(x, y+1);
+            return true;
+        }
+
+        return false;
     }
 }
