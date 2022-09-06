@@ -12,15 +12,13 @@ public class chap03_02 {
             arr[i] = sc.nextInt();
 
         int M = Integer.MIN_VALUE;
+        float total = 0;
         for(int i : arr) {
             if(M < i)
                 M = i;
+            total += i;
         }
 
-        float result = 0;
-        for(int i=0; i<N; i++)
-            result += (arr[i] * 100 / M);
-
-        System.out.print(result / N);
+        System.out.print((total * 100 / M) / N);
     }
 }
