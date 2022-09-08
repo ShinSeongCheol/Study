@@ -33,18 +33,54 @@
 - jQuery v3.6.0
 ### 데이터베이스 테이블 구조
 ![image](https://user-images.githubusercontent.com/46277114/185273825-972f180a-6b9a-48e1-9f1a-c336ae997c3e.png)
+|이름|설명|
+|:---|:---|
+|id|데이터베이스에 값을 삽입할때마다 늘어나는 id값|
+|account|계정|
+|password|계정의 비밀번호|
+|datetime|접속 기록|
+|latest| 최근 접속 기록|
+|loginCount| 로그인 성공 횟수|
+|ip| ip 주소 값|
+
 ### php 파일 설명
 |파일명|내용|
 |:---:|:---|
 |login.php|login.php는 사용자가 입력한 값을 받아서 데이터베이스에 정보가 있는지 비밀번호가 있는지 확인하고 맞으면 비밀번호를 새로운 해쉬값으로 수정한다.|
 |register.php|register.php는 사용자가 입력한 값을 받아서 데이터베이스에 새로운 회원 정보를 삽입한다|
 
-- database.php - 
-|메서드|내용|
-|:---:|:---|
-|connect()|데이터베이스에 연결한다|
-|close()|데이터베이스의 연결을 끊는다|
-|registerUser()|데이터베이스에 새로운 회원정보(account, password, datetime, latest, login_count, ip)를 삽입한다.
+#### database.php  
+|메서드|매개변수|내용|반환값|
+|:---:|:---|:---|:---|
+|connect()||데이터베이스에 연결한다|
+|close()||데이터베이스의 연결을 끊는다|
+|registerUser()|$id, $password|데이터베이스에 새로운 회원정보(account, password, datetime, latest, login_count, ip)를 삽입한다.| 성공: true, 실패: false|
+|checkUserInfo()|$id|인수로 들어온 값을 사용하여 데이터베이스에 특정한 값이 있는지 조회한다.| 성공: true, 실패: false|
+|getUserInfo()|$account|인수로 들어온 값을 사용하여 데이터베이스에 저장되어있는 특정한 값을 불러온다| 성공: userInfo, 실패: false|
+|updatePassword()|$id, $password|인수로 들어온 id와 password값을 사용하여 새로운 salt 해쉬값을 만들고 데이터베이스에 저장되어있는 password를 수정한다|성공: $userInfo -> getPassword()(새로운 비밀번호 해쉬값 반환)|
+|checkPassword()|$id, $password|인수로 들어온 id와 password값을 사용해 현재 비밀번호 값과 맞는지 비교한다|성공: $dbUserInfo -> getPassword()(데이터베이스에 저장되어 있는 암호화된 패스워드 값)||
+
+#### salt.php
+|메서드|매개변수|내용|반환값|
+|:---:|:---|:---|:---|
+|getFactorial()|$num| 팩토리얼 값이 얼만지 구한다 | $result(팩토리얼 값)|
+|encryptPassword()|$arr| 인수로 들어온 $arr 배열을 이용하여 salt 조합중 하나를 선택하고 sha256으로 암호화한 패스워드를 반환한다.| hash('sha256', "$saltString[$mod]")|
+
+#### userInfo.php
+|메서드|매개변수|내용|반환값|
+|:---:|:---|:---|:---|
+|setId()|$id|userInfo 클래스 멤버 변수 id에 인수로 들어온 값을 저장한다|
+|setPassword()|$password|userInfo 클래스 멤버 변수 password에 인수로 들어온 값을 저장한다|
+|setLatest()|$latest|userInfo 클래스 멤버 변수 latest에 인수로 들어온 값을 저장한다|
+|setDatetime()|$datetime|userInfo 클래스 멤버 변수 datetime에 인수로 들어온 값을 저장한다|
+|setLoginCount()|$loginCount|userInfo 클래스 멤버 변수 loginCount에 인수로 들어온 값을 저장한다|
+|setIp()|$ip|userInfo 클래스 멤버 변수 ip에 인수로 들어온 값을 저장한다|
+|getId()||userInfo 클래스 멤버변수 id에 저장된 값을 가져온다| $id|
+|getPassword()||userInfo 클래스 멤버변수 password에 저장된 값을 가져온다| $password|
+|getLatest()||userInfo 클래스 멤버변수 latest에 저장된 값을 가져온다| $latest|
+|getDatetime()||userInfo 클래스 멤버변수 datetime에 저장된 값을 가져온다| $datetime|
+|getLoginCount()||userInfo 클래스 멤버변수 loginCount에 저장된 값을 가져온다| $loginCount|
+|getIp()||userInfo 클래스 멤버변수 ip에 저장된 값을 가져온다| $ip|
 
 ### 구현 화면
 #### 메인 화면
