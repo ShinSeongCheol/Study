@@ -63,7 +63,7 @@
 #### salt.php
 |메서드|매개변수|내용|반환값|
 |:---:|:---|:---|:---|
-|getFactorial()|$num| 팩토리얼 값이 얼만지 구한다 | $result  (팩토리얼 값)|
+|getFactorial()|$num| 팩토리얼 값이 얼마인지 구한다 | 계산된 팩토리얼 값 반환($result)|
 |encryptPassword()|$arr| 인수로 들어온 $arr 배열을 이용하여 salt 조합중 하나를 선택하고 sha256으로 암호화한 패스워드를 반환한다.| hash('sha256', "$saltString[$mod]")|
 
 #### userInfo.php
