@@ -33,6 +33,19 @@
 - jQuery v3.6.0
 ### 데이터베이스 테이블 구조
 ![image](https://user-images.githubusercontent.com/46277114/185273825-972f180a-6b9a-48e1-9f1a-c336ae997c3e.png)
+### php 파일 설명
+|파일명|내용|
+|:---:|:---|
+|login.php|login.php는 사용자가 입력한 값을 받아서 데이터베이스에 정보가 있는지 비밀번호가 있는지 확인하고 맞으면 비밀번호를 새로운 해쉬값으로 수정한다.|
+|register.php|register.php는 사용자가 입력한 값을 받아서 데이터베이스에 새로운 회원 정보를 삽입한다|
+
+- database.php - 
+|메서드|내용|
+|:---:|:---|
+|connect()|데이터베이스에 연결한다|
+|close()|데이터베이스의 연결을 끊는다|
+|registerUser()|데이터베이스에 새로운 회원정보(account, password, datetime, latest, login_count, ip)를 삽입한다.
+
 ### 구현 화면
 #### 메인 화면
 ![image](https://user-images.githubusercontent.com/46277114/185273916-5008da28-b025-45cb-a66e-285563205f78.png)
