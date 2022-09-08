@@ -57,13 +57,13 @@
 |registerUser()|$id, $password|데이터베이스에 새로운 회원정보(account, password, datetime, latest, login_count, ip)를 삽입한다.| 성공: true, 실패: false|
 |checkUserInfo()|$id|인수로 들어온 값을 사용하여 데이터베이스에 특정한 값이 있는지 조회한다.| 성공: true, 실패: false|
 |getUserInfo()|$account|인수로 들어온 값을 사용하여 데이터베이스에 저장되어있는 특정한 값을 불러온다| 성공: userInfo, 실패: false|
-|updatePassword()|$id, $password|인수로 들어온 id와 password값을 사용하여 새로운 salt 해쉬값을 만들고 데이터베이스에 저장되어있는 password를 수정한다|성공: $userInfo -> getPassword()(새로운 비밀번호 해쉬값 반환)|
-|checkPassword()|$id, $password|인수로 들어온 id와 password값을 사용해 현재 비밀번호 값과 맞는지 비교한다|성공: $dbUserInfo -> getPassword()(데이터베이스에 저장되어 있는 암호화된 패스워드 값)||
+|updatePassword()|$id, $password|인수로 들어온 id와 password값을 사용하여 새로운 salt 해쉬값을 만들고 데이터베이스에 저장되어있는 password를 수정한다|성공: $userInfo -> getPassword()  (새로운 비밀번호 해쉬값 반환)|
+|checkPassword()|$id, $password|인수로 들어온 id와 password값을 사용해 현재 비밀번호 값과 맞는지 비교한다|성공: $dbUserInfo -> getPassword()  (데이터베이스에 저장되어 있는 암호화된 패스워드 값)||
 
 #### salt.php
 |메서드|매개변수|내용|반환값|
 |:---:|:---|:---|:---|
-|getFactorial()|$num| 팩토리얼 값이 얼만지 구한다 | $result(팩토리얼 값)|
+|getFactorial()|$num| 팩토리얼 값이 얼만지 구한다 | $result  (팩토리얼 값)|
 |encryptPassword()|$arr| 인수로 들어온 $arr 배열을 이용하여 salt 조합중 하나를 선택하고 sha256으로 암호화한 패스워드를 반환한다.| hash('sha256', "$saltString[$mod]")|
 
 #### userInfo.php
