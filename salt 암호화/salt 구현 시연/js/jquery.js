@@ -66,7 +66,7 @@ $(function () {
                     if (json.success) {
                         $("#retryLogin").before("<h2>로그인 성공!!</h2>");
                         $("#retryLogin").before("<h3 style='background-color:red; width:825px;'>이전 비밀번호 : " + json.oldPassword + "</h3>");
-                        $("#retryLogin").before("<h3 style='background-color:red'>현재 비밀번호 : " + json.newPassword + "</h3>");
+                        $("#retryLogin").before("<h3 style='background-color:red'>New 비밀번호 : " + json.newPassword + "</h3>");
                     }
                 }
                 catch (e) {

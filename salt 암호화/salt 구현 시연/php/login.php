@@ -2,20 +2,22 @@
     include_once "database.php";
     include_once "userInfo.php";
     include_once "salt.php";
+    error_reporting(E_ALL^ E_WARNING);
 
     $db = new mariaDb();
-    $userInfo = new userInfo();
+    //$userInfo = new userInfo();
 
     $loginForm = explode("&", $_POST["loginForm"]);
     $id = explode("=", $loginForm[0])[1];
     $password = explode("=", $loginForm[1])[1];
     
-    if($userInfo = $db -> getUserInfo($id)){
+    if($db -> checkUserInfo($id)){
+    //if($userInfo = $db -> getUserInfo($id)){
 
-        $userInfo -> setPassword($password);
+        //$userInfo -> setPassword($password);
 
-        if($encryptedPassword = $db -> checkPassword($userInfo)){
-            if($newPassword = $db -> updatePassword($userInfo)){
+        if($encryptedPassword = $db -> checkPassword($id, $password)){
+            if($newPassword = $db -> updatePassword($id, $password)){
 
                 $result["success"] = true;
                 $result["oldPassword"] = $encryptedPassword;
