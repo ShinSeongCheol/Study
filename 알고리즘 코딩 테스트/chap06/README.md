@@ -15,3 +15,7 @@
 - PriorityQueue를 이용해서 배열을 자동 정렬할 수 있다는 것을 공부할 수 있었고 그리디 알고리즘을 공부할 수 있었다.
 - Comparable이나 Comparator를 이용해서 큐를 자동 정렬 되더록 만들어 봐야겠다.
 - [chap06_02.java]
+
+### 수를 묶어서 최대값 만들기
+- PriorityQueue 객체를 생성할 때 인자로 Collections.reverseOrder() 함수를 사용해서 순서를 뒤집을 수 있다는 것을 알게되었다.
+- [chap06_03.java]
