@@ -19,3 +19,7 @@
 ### 수를 묶어서 최대값 만들기
 - PriorityQueue 객체를 생성할 때 인자로 Collections.reverseOrder() 함수를 사용해서 순서를 뒤집을 수 있다는 것을 알게되었다.
 - [chap06_03.java]
+
+### 회의실 배정하기
+- Arryas.sort()의 두번째 인자로 Comparator 익명객체를 생성하고 compare()메서드를 오버라이드 하는 방법을 공부할 수 있었다.
+- [chap06_04.java]
