@@ -4,7 +4,7 @@
         private $con;
 
         public function connect() {
-            $this -> con = mysqli_connect("localhost", "root", "seongcheol", "seongcheol");
+            $this -> con = mysqli_connect("localhost", "root", "1234", "seongcheol");
         }
 
         public function close() {
@@ -24,7 +24,7 @@
             $userInfo -> setLoginCount(0);
             $userInfo -> setIp($_SERVER["REMOTE_ADDR"]);
 
-            $userInfo -> setPassword($salt -> encryptPassword($userInfo -> userInfoArray()));
+            $userInfo -> setPassword($salt -> encryptPassword($userInfo -> userInfoArray(), $password));
 
             $account = $userInfo -> getId();
             $password  = $userInfo -> getPassword();
@@ -128,7 +128,7 @@
         public function updatePassword($id, $password) {
             $this -> connect();
             
-            $userInfo = new userInfo();
+            $userInfo = $this -> getUserInfo($id);
             
             $userInfo -> setId($id);
             $userInfo -> setPassword($password);
@@ -138,7 +138,7 @@
             $userInfo -> setIp($_SERVER["REMOTE_ADDR"]);
             
             $salt = new salt();
-            $userInfo -> setPassword($salt -> encryptPassword($userInfo -> userInfoArray()));
+            $userInfo -> setPassword($salt -> encryptPassword($userInfo -> userInfoArray(), $password));
             
             $account = $userInfo -> getId();
             $password = $userInfo -> getPassword();
@@ -180,7 +180,7 @@
             $dbUserInfo = $this -> getUserInfo($id);
     
             $salt = new salt();
-            $password = $salt -> encryptPassword($userInfo -> userInfoArray());
+            $password = $salt -> encryptPassword($userInfo -> userInfoArray(), $password);
             $encryptedPassword = $dbUserInfo -> getPassword();
     
             if($password == $encryptedPassword) {
